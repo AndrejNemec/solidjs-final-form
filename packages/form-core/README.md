@@ -38,4 +38,13 @@ declare module "solid-js" {
 }
 ```
 
-
+### Examples:
+- [Simple example](https://github.com/AndrejNemec/solidjs-final-form/blob/master/apps/examples/src/simple/SimpleForm.tsx)
+- [With valibot](https://github.com/AndrejNemec/solidjs-final-form/blob/master/apps/examples/src/with-valibot/WithValibotForm.tsx)
+  - Require `npm i valibot`
+  - Require `npm i @solidjs-final-form/valibot-adapter`
+- [With auto-focus on first error](https://github.com/AndrejNemec/solidjs-final-form/blob/master/apps/examples/src/with-auto-focus-on-first-error/WithAutoFocusOnFirstErrorForm.tsx)
+- [With array fields and valibot validation](https://github.com/AndrejNemec/solidjs-final-form/blob/master/apps/examples/src/with-arrays/FormWithArrays.tsx)
+  - Require `npm i valibot`
+  - Require `npm i @solidjs-final-form/valibot-adapter`
+  - Require `npm i @solidjs-final-form/arrays`
