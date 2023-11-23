@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-final-form/core",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",
@@ -44,12 +44,11 @@
   "typesVersions": {},
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "yarn build && yarn version --minor",
-    "publish-package": "npm publish"
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.0",
-    "final-form": "^4.20.10"
+    "final-form": "^4.20.10",
+    "solid-js": "^1.6.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.1.0",
@@ -60,6 +59,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
+    "final-form": "^4.20.10",
     "jsdom": "^22.1.0",
     "prettier": "3.0.0",
     "solid-js": "^1.7.8",
@@ -68,8 +68,7 @@
     "typescript": "^5.1.6",
     "vite": "^4.4.6",
     "vite-plugin-solid": "^2.7.0",
-    "vitest": "^0.33.0",
-    "final-form": "^4.20.10"
+    "vitest": "^0.33.0"
   },
   "keywords": [
     "solid",

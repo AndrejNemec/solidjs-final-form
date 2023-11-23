@@ -6,11 +6,10 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build --filter=./packages/*",
-    "publish-all": "turbo run publish-package --filter=./packages/*"
+    "build": "turbo run build --filter=./packages/*"
   },
   "devDependencies": {
     "prettier": "^3.1.0",
-    "turbo": "latest"
+    "turbo": "^1.10.16"
   }
 }

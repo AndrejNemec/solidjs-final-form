@@ -49,7 +49,9 @@ const App: Component = () => {
           {form.state.values.email}
 
          <div>
+           {/*@ts-ignore*/}
            <input name='email' type="email" use:field={(value) => value.length > 5 && 'Error!!'}/>
+           {/*@ts-ignore*/}
            <span use:error='email'/>
          </div>
 

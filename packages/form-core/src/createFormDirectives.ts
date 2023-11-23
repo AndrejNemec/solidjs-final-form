@@ -83,3 +83,14 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
     error
   }
 }
+
+export interface FormDirectives {
+  field: (
+    ref: HTMLInputElement,
+    getValidate: Accessor<FieldValidator<any>>
+  ) => void;
+  error: (
+    ref: HTMLElement,
+    getName: Accessor<any>
+  ) => void;
+}

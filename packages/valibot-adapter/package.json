@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-final-form/valibot-adapter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",
@@ -44,8 +44,7 @@
   "typesVersions": {},
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "yarn build && yarn version --minor",
-    "publicate": "npm publish"
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "@solidjs-final-form/core": "0.0.1",
