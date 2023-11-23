@@ -1,0 +1,26 @@
+{
+  "name": "dev",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@solidjs-final-form/core": "link:../../packages/form-core",
+    "@solidjs-final-form/arrays": "link:../../packages/form-arrays",
+    "@solidjs-final-form/valibot-adapter": "link:../../packages/valibot-adapter",
+    "solid-js": "^1.8.5",
+    "valibot": "^0.21.0",
+    "final-form": "^4.20.10",
+    "final-form-arrays": "^3.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vite-plugin-solid": "^2.7.2",
+    "vite-tsconfig-paths": "^4.2.1"
+  }
+}
