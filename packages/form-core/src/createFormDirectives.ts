@@ -6,7 +6,7 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
 
   const field = (
     ref: HTMLInputElement,
-    getValidate?: Accessor<FieldValidator<FormValues[keyof FormValues]>>
+    getValidate: Accessor<FieldValidator<FormValues[keyof FormValues]>>
   ) => {
     const name = ref.name as keyof FormValues;
     let removeListeners: () => void | undefined;
@@ -44,7 +44,11 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
         { value: true },
         {
           getValidator: () => {
-            return getValidate?.()
+            const validate = getValidate();
+            if (typeof validate === "function") {
+              return validate;
+            }
+            return undefined;
           },
         }
       )
@@ -85,6 +89,6 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
 }
 
 export interface FormDirectives {
-  field?: FieldValidator<any>
+  field: FieldValidator<any> | boolean
   error: string
 }
