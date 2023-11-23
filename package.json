@@ -1,17 +1,17 @@
 {
-  "name": "solid-final-form",
-  "version": "0.0.1",
+  "name": "solidjs-final-form",
+  "version": "0.0.2",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndrejNemec/solid-final-form.git"
+    "url": "git+https://github.com/AndrejNemec/solidjs-final-form.git"
   },
-  "homepage": "https://github.com/AndrejNemec/solid-final-form#readme",
+  "homepage": "https://github.com/AndrejNemec/solidjs-final-form#readme",
   "bugs": {
-    "url": "https://github.com/AndrejNemec/solid-final-form/issues"
+    "url": "https://github.com/AndrejNemec/solidjs-final-form/issues"
   },
   "files": [
     "dist"
@@ -42,9 +42,9 @@
   "typesVersions": {},
   "scripts": {
     "dev": "vite serve dev",
-    "build:solid-final-form": "tsup",
+    "build:solidjs-final-form": "tsup",
     "build:valibot": "tsup src/adapters/valibot/index.ts --outDir dist/adapters/valibot",
-    "build": "pnpm build:solid-final-form && pnpm build:valibot",
+    "build": "pnpm build:solidjs-final-form && pnpm build:valibot",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
@@ -86,7 +86,7 @@
     "final-form",
     "form-management",
     "reactive-forms",
-    "solid-final-form",
+    "solidjs-final-form",
     "form-validation",
     "typescript-forms",
     "solidjs-components",

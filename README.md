@@ -1,5 +1,5 @@
 <p>
-  <img width="100%" src="https://assets.solidjs.com/banner?type=solid-final-form&background=tiles&project=%20" alt="solid-final-form">
+  <img width="100%" src="https://assets.solidjs.com/banner?type=solidjs-final-form&background=tiles&project=%20" alt="solidjs-final-form">
 </p>
 
 # Solid final form
@@ -15,19 +15,19 @@
 ### Installation:
 
 ```bash
-npm i solid-final-form
+npm i solidjs-final-form
 # or
-yarn add solid-final-form
+yarn add solidjs-final-form
 # or
-pnpm add solid-final-form
+pnpm add solidjs-final-form
 ```
 ---
 
 ### Simple usage:
 ```tsx
 import {Show} from 'solid-js'
-import {createForm} from 'solid-final-form'
-import {valiForm} from 'solid-final-form/adapters/valibot'
+import {createForm} from 'solidjs-final-form'
+import {valiForm} from 'solidjs-final-form/adapters/valibot'
 import {email, minLength, object, string} from "valibot"; //Optional (pnpm add valibot)
 
 type SignInData = {
