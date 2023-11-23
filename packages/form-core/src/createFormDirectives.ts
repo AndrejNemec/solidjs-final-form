@@ -9,6 +9,7 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
     getValidate: Accessor<FieldValidator<FormValues[keyof FormValues]>>
   ) => {
     const name = ref.name as keyof FormValues;
+
     let removeListeners: () => void | undefined;
     unsubscribes.push(
       api.registerField(
@@ -19,6 +20,7 @@ export const createFormDirectives = <FormValues, InitialFormValues = Partial<For
           } else {
             ref.value = String(value);
           }
+
           if (!removeListeners) {
             const onBlur = (event: Event) => blur();
             const onChange = (event: Event) => {

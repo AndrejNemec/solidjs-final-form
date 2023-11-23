@@ -43,6 +43,15 @@ export const createForm = <FormValues, InitialFormValues = Partial<FormValues>>(
     subscriptions.reverse().forEach((unsubscribe) => unsubscribe());
   });
 
+  const form = {
+    state,
+    directives,
+    handleSubmit: async () => {
+      return await finalForm.submit()
+    },
+    api: finalForm,
+  }
+
   return [
     {
       state,
@@ -54,13 +63,16 @@ export const createForm = <FormValues, InitialFormValues = Partial<FormValues>>(
     },
     {
       Provider: (props: ParentProps) => (
-        <Provider api={finalForm} directives={directives} state={state} handleSubmit={finalForm.submit}>
+        <Provider {...form}>
           {props.children}
         </Provider>
       ),
       useFormState: useFormContext<FormValues>,
-      Field: <F extends keyof FormValues>(props: FieldProps<FormValues, F>) => Field(props),
-      createField: <F extends keyof FormValues>(name: F, props: () => CreateFieldProps<FormValues, F>) => createField(name, props),
+      Field: <F extends keyof FormValues>(props: FieldProps<FormValues, F>) => Field({form: form as any, ...props}),
+      createField: <F extends keyof FormValues>(name: F, props?: () => CreateFieldProps<FormValues, F>) => createField(name, () => ({
+        form: form as any,
+        ...props?.()
+      })),
     }
   ]
 }

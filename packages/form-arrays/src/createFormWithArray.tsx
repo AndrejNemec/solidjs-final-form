@@ -11,11 +11,11 @@ export interface CreateFormWithArrayOptions<
 export const createFormWithArray = <FormValues, InitialFormValues = Partial<FormValues>>(
   options: () => CreateFormWithArrayOptions<FormValues, InitialFormValues>
 ) => {
-  const form = createForm<FormValues, InitialFormValues>(() => {
+  const [api, Form] = createForm<FormValues, InitialFormValues>(() => {
     const opts = options();
     const mutators = {
       ...arrayMutators,
-      ...options().mutators
+      ...options().mutators || {}
     }
     return {
       ...opts,
@@ -25,11 +25,14 @@ export const createFormWithArray = <FormValues, InitialFormValues = Partial<Form
 
 
   return [
-    form[0],
+    api,
     {
-      ...form[1],
+      Provider: Form.Provider,
+      useFormState: Form.useFormState,
+      Field: Form.Field,
+      createField: Form.createField,
       FieldArray: <F extends keyof FormValues>(props: FieldArrayProps<FormValues, F>) => FieldArray(props),
       createFieldArray: <F extends keyof FormValues>(name: F, props: () => CreateFieldArrayProps<FormValues, F>) => createFieldArray(name, props),
-    }
-  ]
+    } as const
+  ] as const
 }

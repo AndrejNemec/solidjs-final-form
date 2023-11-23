@@ -1,6 +1,6 @@
 {
   "name": "@solidjs-final-form/arrays",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",
@@ -47,13 +47,13 @@
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
-    "@solidjs-final-form/core": "^0.2.1",
+    "@solidjs-final-form/core": "^0.2.7",
     "final-form": "^4.20.10",
     "final-form-arrays": "^3.1.0",
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
-    "@solidjs-final-form/core": "^0.2.1",
+    "@solidjs-final-form/core": "^0.2.7",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "concurrently": "^8.2.0",

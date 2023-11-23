@@ -1,10 +1,11 @@
 import { onCleanup, onMount } from "solid-js";
 import {FieldState, FieldValidator} from "final-form";
 import {createStore} from "solid-js/store";
-import {useFormContext} from "./Provider";
+import {FormContextType, useFormContext} from "./Provider";
 import {allFieldSubscriptions} from "./utils";
 
 export interface CreateFieldProps<FormValues, F extends keyof FormValues = keyof FormValues> {
+  form?: FormContextType<FormValues>,
   validate?: FieldValidator<FormValues[F]>
   validateFields?: string[]
   initialValue?: FormValues[F]
@@ -19,7 +20,7 @@ export const createField = <FormValues, F extends keyof FormValues = keyof FormV
   name: F | string,
   props?: () => CreateFieldProps<FormValues, F>
 ): FieldState<FormValues[F]> => {
-  const context = useFormContext<FormValues>()
+  const context = props?.().form || useFormContext<FormValues>()
   let subscription: (() => void)
 
   const register = (callback: (state: FieldState<FormValues[F]>) => void, silent: boolean) =>

@@ -76,7 +76,7 @@ export const SignInForm = () => {
     }
 
     return (
-        <SignInForm.Provider>
+        <Form.Provider>
             <form onSubmit={handleSubmit}>
               <div>
                 <input type="text" name='email' use:field/>
@@ -88,7 +88,170 @@ export const SignInForm = () => {
               </div>
               <button type="submit">Submit</button>
             </form>
-        </SignInForm.Provider>
+        </Form.Provider>
+    )
+}
+```
+
+
+### With valibot validation library:
+### Installation:
+
+```bash
+npm i @solidjs-final-form/valibot-adapter valibot
+# or
+yarn add @solidjs-final-form/valibot-adapter valibot
+# or
+pnpm add @solidjs-final-form/valibot-adapter valibot
+```
+
+Example:
+
+```tsx
+import {Show} from 'solid-js'
+import {createForm} from '@solidjs-final-form/core'
+import {valiForm} from '@solidjs-final-form/valibot-adapter'
+import {email, minLength, string, object} from "valibot";
+
+type SignInData = {
+  email: string
+  password: string
+}
+
+export const SignInForm = () => {
+  const [form, Form] = createForm<SignInData>(() => ({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    onSubmit: async (values, form, callback) => {
+      console.log(values)
+    },
+    validate: valiForm(object({
+      email: string([email("Email is not valid"), minLength(5, "Email is too short")]),
+      password: string([minLength(10, "Password is too short")]),
+    }))
+  }))
+
+  const {directives: {field, error}} = form
+
+  const handleSubmit = (event: Event) => {
+    event.preventDefault()
+    form.handleSubmit()
+  }
+
+  return (
+    <Form.Provider>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input type="text" name='email' use:field/>
+          <span use:error='email'/>
+        </div>
+        <div>
+          <input type="password" name='password' use:field/>
+          <span use:error='password'/>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </Form.Provider>
+  )
+}
+```
+
+
+### With arrays:
+### Installation:
+
+```bash
+npm i @solidjs-final-form/arrays final-form-arrays
+# or
+yarn add @solidjs-final-form/arrays final-form-arrays
+# or
+pnpm add @solidjs-final-form/arrays final-form-arrays
+```
+
+Example:
+
+```tsx
+import {Show, Index} from 'solid-js'
+import {createFormWithArray} from '@solidjs-final-form/arrays'
+import {valiForm} from '@solidjs-final-form/valibot-adapter'
+import {email, minLength, string, object, array} from "valibot";
+
+type SignInData = {
+    email: string
+    password: string
+    todos: {
+        title: string
+        description: string
+    }[]
+}
+
+export const SignInForm = () => {
+    const [form, Form] = createFormWithArray<SignInData>(() => ({
+        initialValues: {
+            email: '',
+            password: '',
+            todos: []
+        },
+        onSubmit: async (values, form, callback) => {
+            console.log(values)
+        },
+        validate: valiForm(object({
+            email: string([email("Email is not valid"), minLength(5, "Email is too short")]),
+            password: string([minLength(10, "Password is too short")]),
+            todos: array(object({
+                title: string([minLength(5, "Title is too short")]),
+                description: string([minLength(10, "Description is too short")]),
+            }))
+        }))
+    }))
+
+    const {directives: {field, error}} = form
+
+    const handleSubmit = (event: Event) => {
+        event.preventDefault()
+        form.handleSubmit()
+    }
+
+    return (
+        <Form.Provider>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <input type="text" name='email' use:field/>
+                    <span use:error='email'/>
+                </div>
+                <div>
+                    <input type="password" name='password' use:field/>
+                    <span use:error='password'/>
+                </div>
+                <div>
+                    <Form.FieldArray name='todos'>
+                        {(fields, utils) => (
+                            <div>
+                                <Index each={fields}>
+                                    {(field, index) => (
+                                        <div>
+                                            <div>
+                                                <input type="text" name={`${field}.title`} use:field/>
+                                                <span use:error={`${field}.title`}/>
+                                            </div>
+                                            <div>
+                                                <input type="text" name={`${field}.description`} use:field/>
+                                                <span use:error={`${field}.description`}/>
+                                            </div>
+                                          <button type="button" onClick={() => utils.remove(index)}>Remove todo</button>
+                                        </div>
+                                    )}
+                                </Index>
+                              <button type="button" onClick={() => utils.push({title: '', description: ''})}>Add todo</button>
+                            </div>
+                        )}
+                    </Form.FieldArray>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </Form.Provider>
     )
 }
 ```

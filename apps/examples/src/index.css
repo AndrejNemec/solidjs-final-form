@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-50;
+  }
+
+  label {
+    @apply text-slate-50 font-semibold text-lg;
+  }
+
+  form {
+    @apply border rounded-lg border-slate-700 p-4 flex flex-col gap-5 justify-center items-center;
+  }
+
+  input {
+    @apply bg-slate-800 text-slate-50 border rounded-lg border-slate-700 p-1;
+  }
+
+  select {
+    @apply bg-slate-800 text-slate-50 border rounded-lg border-slate-700 p-1;
+  }
+
+  textarea {
+    @apply bg-slate-800 text-slate-50 border rounded-lg border-slate-700 p-1;
+  }
+
+  button {
+    @apply bg-slate-800 text-slate-50 border rounded-lg border-slate-700 px-2 py-1;
+  }
+
+  code {
+    @apply block bg-slate-800 text-purple-200 border rounded-lg border-slate-700 p-1;
+  }
+}
