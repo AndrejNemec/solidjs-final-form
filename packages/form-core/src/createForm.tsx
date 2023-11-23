@@ -47,7 +47,9 @@ export const createForm = <FormValues, InitialFormValues = Partial<FormValues>>(
     {
       state,
       directives,
-      handleSubmit: finalForm.submit,
+      handleSubmit: async () => {
+        return await finalForm.submit()
+      },
       api: finalForm,
     },
     {
