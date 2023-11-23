@@ -1,6 +1,6 @@
 {
   "name": "solidjs-final-form",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",

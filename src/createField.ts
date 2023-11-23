@@ -43,7 +43,13 @@ export const createField = <FormValues, F extends keyof FormValues = keyof FormV
       defaultValue: props().defaultValue,
       validateFields: props().validateFields,
       isEqual: (a: any, b: any): boolean => a === b,
-      silent
+      silent,
+      beforeSubmit: () => {
+        console.log()
+      },
+      data: {
+        getRef: () => inputRef
+      }
     });
 
   const [state, setState] = createSignal<FieldState<FormValues[F]>>((() => {
@@ -68,7 +74,7 @@ export const createField = <FormValues, F extends keyof FormValues = keyof FormV
   })
 
   onCleanup(() => {
-    subscription()
+    subscription?.()
   })
 
   return [
