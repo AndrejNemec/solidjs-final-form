@@ -1,6 +1,6 @@
 {
   "name": "solidjs-final-form",
-  "version": "0.0.2",
+  "version": "0.0.10",
   "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
   "license": "MIT",
   "author": "AndrejNemec",
@@ -24,27 +24,34 @@
   "types": "./dist/index.d.ts",
   "browser": {},
   "exports": {
-    "solid": {
-      "development": "./dist/dev.jsx",
-      "import": "./dist/index.jsx"
-    },
-    "development": {
+    ".": {
+      "solid": {
+        "development": "./dist/dev.jsx",
+        "import": "./dist/index.jsx"
+      },
+      "development": {
+        "import": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/dev.js"
+        }
+      },
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/dev.js"
+        "default": "./dist/index.js"
       }
     },
-    "import": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+    "./adapters/valibot": {
+      "types": "./dist/adapters/valibot/index.d.ts",
+      "default": "./dist/adapters/valibot/index.js",
+      "import": "./dist/adapters/valibot/index.js"
     }
   },
   "typesVersions": {},
   "scripts": {
     "dev": "vite serve dev",
-    "build:solidjs-final-form": "tsup",
-    "build:valibot": "tsup src/adapters/valibot/index.ts --outDir dist/adapters/valibot",
-    "build": "pnpm build:solidjs-final-form && pnpm build:valibot",
+    "build:form": "tsup",
+    "build:valibot": "tsup ./src/adapters/valibot/index.ts --no-config --format esm --dts-resolve --dts --out-dir ./dist/adapters/valibot",
+    "build": "pnpm build:form && pnpm build:valibot",
     "test": "concurrently pnpm:test:*",
     "test:client": "vitest",
     "test:ssr": "pnpm run test:client --mode ssr",
