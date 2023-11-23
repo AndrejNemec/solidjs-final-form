@@ -1,0 +1,116 @@
+{
+  "name": "solid-final-form",
+  "version": "0.0.1",
+  "description": "A Solid.js integration for Final Form, providing robust form management capabilities with reactive rendering.",
+  "license": "MIT",
+  "author": "AndrejNemec",
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrejNemec/solid-final-form.git"
+  },
+  "homepage": "https://github.com/AndrejNemec/solid-final-form#readme",
+  "bugs": {
+    "url": "https://github.com/AndrejNemec/solid-final-form/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "browser": {},
+  "exports": {
+    "solid": {
+      "development": "./dist/dev.jsx",
+      "import": "./dist/index.jsx"
+    },
+    "development": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/dev.js"
+      }
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "typesVersions": {},
+  "scripts": {
+    "dev": "vite serve dev",
+    "build:solid-final-form": "tsup",
+    "build:valibot": "tsup src/adapters/valibot/index.ts --outDir dist/adapters/valibot",
+    "build": "pnpm build:solid-final-form && pnpm build:valibot",
+    "test": "concurrently pnpm:test:*",
+    "test:client": "vitest",
+    "test:ssr": "pnpm run test:client --mode ssr",
+    "prepublishOnly": "pnpm build",
+    "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
+    "lint": "concurrently pnpm:lint:*",
+    "lint:code": "eslint --ignore-path .gitignore --max-warnings 0 src/**/*.{js,ts,tsx,jsx}",
+    "lint:types": "tsc --noEmit",
+    "update-deps": "pnpm up -Li"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.18.15",
+    "esbuild-plugin-solid": "^0.5.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "jsdom": "^22.1.0",
+    "prettier": "3.0.0",
+    "solid-js": "^1.7.8",
+    "tsup": "^7.1.0",
+    "tsup-preset-solid": "^2.0.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.6",
+    "vite-plugin-solid": "^2.7.0",
+    "vitest": "^0.33.0"
+  },
+  "optionalDependencies": {
+    "valibot": "^0.21.0"
+  },
+  "keywords": [
+    "solid",
+    "solid-js",
+    "final-form",
+    "form-management",
+    "reactive-forms",
+    "solid-final-form",
+    "form-validation",
+    "typescript-forms",
+    "solidjs-components",
+    "data-binding",
+    "form-state-management",
+    "ui-components",
+    "reactivity",
+    "web-development",
+    "user-input",
+    "form-hooks",
+    "customizable-forms",
+    "asynchronous-validation",
+    "schema-validation",
+    "frontend-framework",
+    "solidjs-library"
+  ],
+  "packageManager": "pnpm@8.6.0",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.6.0"
+  },
+  "dependencies": {
+    "final-form": "^4.20.10",
+    "final-form-arrays": "^3.1.0",
+    "lodash.set": "^4.3.2"
+  }
+}
